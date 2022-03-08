@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+.App {
+   background-color: white;
+   height: 1000px;
+   width: 100%;
+}
+
+.App-header {
+  margin-top: 50px;
+  background-color: #EEECEE;
+  color: black;
+  height: 1000px;
+  width: 75%;
+  margin-left: 10%;
+
+}
+
+.title {
+  margin-left: 15%;
+  padding-top: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 250%;
+  font-weight: 800;
+}
+
+button {
+  padding: 10px;
+  margin: 4px 2px;
+  border-radius: 16px;
+  border: 1px solid #ABC6F4;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+}
+
+button:hover {
+  background-color: #23509C;
+  color: white;
+}
+
+.Menu1 {
+   width: 400px;
+   background-color: #EEECEE;
+   position: relative;
+   margin-left: 60%;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 800;
+}
+
+.Menu2 {
+   width: 400px;
+   background-color: #EEECEE;
+   position: relative;
+   margin-left: 60%;
+   margin-top: 40px;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 800;
+}
+
+.Alpaca {
+  margin-left: 15%;
+}
+
+.background {
+   position: absolute;
+   z-index: 1;
+}
+
+.neck {
+  position: absolute;
+  z-index: 2;
+}
+.accessories {
+  position: absolute;
+  z-index: 6;
+}
+.ears {
+  position: absolute;
+  z-index: 5;
+}
+.eyes {
+  position: absolute;
+  z-index: 4;
+}
+
+.hair {
+  position: absolute;
+  z-index: 4;
+}
+
+.leg {
+  position: absolute;
+  z-index: 2;
+}
+.mouth {
+  position: absolute;
+  z-index: 4;
+}
+.nose {
+  position: absolute;
+  z-index: 3;
+}
