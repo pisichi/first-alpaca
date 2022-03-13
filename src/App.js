@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 import Backgrounds from "./components/alpaca/Backgrounds";
@@ -11,22 +10,95 @@ import Leg from "./components/alpaca/Leg";
 import Mouth from "./components/alpaca/Mouth";
 import Nose from "./components/alpaca/Nose";
 
-// import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import React, { useState } from "react";
 
 function App() {
   const [currentMenu, setCurrentMenu] = useState("background");
-  const [background, setBackground] = useState("default");
+  const [background, setBackground] = useState("blue50");
   const [neck, setNeck] = useState("default");
-  const [accessories, setAccessories] = useState("default");
+  const [accessories, setAccessories] = useState("none");
   const [ears, setEars] = useState("default");
   const [eyes, setEyes] = useState("default");
   const [hair, setHair] = useState("elegant");
   const [leg, setLeg] = useState("default");
   const [mouth, setMouth] = useState("default");
   const [nose, setNose] = useState("default");
+
+  const alpaca = {
+    accessories: [
+      { label: "Earings", value: "earings" },
+      { label: "Flower", value: "flower" },
+      { label: "Glasses", value: "glasses" },
+      { label: "Headphone", value: "headphone" },
+      { label: "None", value: "none" },
+    ],
+    ears: [
+      { label: "Default", value: "default" },
+      { label: "Tiltbackward", value: "tilt-backward" },
+      { label: "Tiltforward", value: "tilt-forward" },
+    ],
+    hair: [
+      { label: "Default", value: "default" },
+      { label: "Curls", value: "curls" },
+      { label: "Elegant", value: "elegant" },
+      { label: "Quiff", value: "quiff" },
+      { label: "Short", value: "short" },
+      { label: "Bang", value: "bang" },
+    ],
+    leg: [
+      { label: "Default", value: "default" },
+      { label: "Bubbletea", value: "bubble-tea" },
+      { label: "Cookie", value: "cookie" },
+      { label: "Gameconsole", value: "game-console" },
+      { label: "Tiltbackward", value: "tilt-backward" },
+      { label: "Tiltforward", value: "tilt-forward" },
+    ],
+    mouth: [
+      { label: "Default", value: "default" },
+      { label: "Eating", value: "eating" },
+      { label: "Laugh", value: "laugh" },
+      { label: "Tongue", value: "tongue" },
+      { label: "Astonished", value: "astonished" },
+    ],
+    background: [
+      { label: "blue50", value: "blue50" },
+      { label: "blue60", value: "blue60" },
+      { label: "blue70", value: "blue70" },
+      { label: "darkblue30", value: "darkblue30" },
+      { label: "darkblue50", value: "darkblue50" },
+      { label: "darkblue70", value: "darkblue70" },
+      { label: "green50", value: "green50" },
+      { label: "green60", value: "green60" },
+      { label: "green70", value: "green70" },
+      { label: "grey40", value: "grey40" },
+      { label: "grey70", value: "grey70" },
+      { label: "grey80", value: "grey80" },
+      { label: "red50", value: "red50" },
+      { label: "red60", value: "red60" },
+      { label: "red70", value: "red70" },
+      { label: "yellow50", value: "yellow50" },
+      { label: "yellow50", value: "yellow50" },
+      { label: "yellow70", value: "yellow70" },
+    ],
+    neck: [
+      { label: "Default", value: "default" },
+      { label: "Bend Backward", value: "bend-backward" },
+      { label: "Bend Fackward", value: "bend-forward" },
+      { label: "Thick", value: "thick" },
+    ],
+    nose: [{ label: "Default", value: "default" }],
+    eyes: [
+      { label: "Default", value: "default" },
+      { label: "Angry", value: "angry" },
+      { label: "Naughty", value: "naughty" },
+      { label: "panda", value: "panda" },
+      { label: "Smart", value: "smart" },
+      { label: "Star", value: "star" },
+    ],
+  };
+
   return (
-    <div className="App ">
+    <div className="w-100">
       <p className="title"> ALPACA GENERATOR </p>
 
       <div className="Alpaca">
@@ -43,17 +115,61 @@ function App() {
 
       <div className="Menu1">
         <header>ACCESSORIZE THE ALPACA'S</header>
-        
 
-        <button onClick={() => setCurrentMenu("background")}>background</button>
-        <button onClick={() => setCurrentMenu("neck")}>neck</button>
-        <button onClick={() => setCurrentMenu("accessories")}>accessories</button>
-        <button onClick={() => setCurrentMenu("ears")}>ears</button>
-        <button onClick={() => setCurrentMenu("hair")}>hair</button>
-        <button onClick={() => setCurrentMenu("leg")}>leg</button>
-        <button onClick={() => setCurrentMenu("mouth")}>mouth</button>
-        <button onClick={() => setCurrentMenu("nose")}>nose</button>
-        <button onClick={() => setCurrentMenu("eyes")}>eyes</button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+          onClick={() => setCurrentMenu("background")}
+        >
+          background
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+          onClick={() => setCurrentMenu("neck")}
+        >
+          neck
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+          onClick={() => setCurrentMenu("accessories")}
+        >
+          accessories
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+          onClick={() => setCurrentMenu("ears")}
+        >
+          ears
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+          onClick={() => setCurrentMenu("hair")}
+        >
+          hair
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+          onClick={() => setCurrentMenu("leg")}
+        >
+          leg
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+          onClick={() => setCurrentMenu("mouth")}
+        >
+          mouth
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+          onClick={() => setCurrentMenu("nose")}
+        >
+          nose
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+          onClick={() => setCurrentMenu("eyes")}
+        >
+          eyes
+        </button>
       </div>
 
       <div className="Menu2">
@@ -63,86 +179,167 @@ function App() {
           switch (currentMenu) {
             case "background":
               return [
-                <button onClick={() => setBackground("blue50")}>blue50</button>,
-                <button onClick={() => setBackground("blue60")}>blue60</button>,
-                <button onClick={() => setBackground("blue70")}>blue70</button>,
-                <button onClick={() => setBackground("darkblue30")}>darkblue30</button>,
-                <button onClick={() => setBackground("darkblue50")}>darkblue50</button>,
-                <button onClick={() => setBackground("darkblue70")}>darkblue70</button>,
-                <button onClick={() => setBackground("green50")}>green50</button>,
-                <button onClick={() => setBackground("green60")}>green60</button>,
-                <button onClick={() => setBackground("green70")}>green70</button>,
-                <button onClick={() => setBackground("grey40")}>grey40</button>,
-                <button onClick={() => setBackground("grey70")}>grey70</button>,
-                <button onClick={() => setBackground("grey80")}>grey80</button>,
-                <button onClick={() => setBackground("red50")}>red50</button>,
-                <button onClick={() => setBackground("red60")}>red60</button>,
-                <button onClick={() => setBackground("red70")}>red70</button>,
-                <button onClick={() => setBackground("yellow50")}>yellow50</button>,
-                <button onClick={() => setBackground("yellow60")}>yellow60</button>,
-                <button onClick={() => setBackground("yellow70")}>yellow70</button>,
+                <div>
+                  {alpaca.background.map((value) => {
+                    return (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                        onClick={() => setBackground(`${value.value}`)}
+                      >
+                        {" "}
+                        {value.label}{" "}
+                      </button>
+                    );
+                  })}
+                </div>,
               ];
             case "neck":
               return [
-                <button onClick={() => setNeck("default")}>default</button>,
-                <button onClick={() => setNeck("bendbackward")}>bendbackward</button>,
-                <button onClick={() => setNeck("bendforward")}>bendforward</button>,
-                <button onClick={() => setNeck("thick")}>thick</button>,
+                <div>
+                  {alpaca.neck.map((value) => {
+                    return (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                        onClick={() => setNeck(`${value.value}`)}
+                      >
+                        {" "}
+                        {value.label}{" "}
+                      </button>
+                    );
+                  })}
+                </div>,
               ];
             case "accessories":
               return [
-                <button onClick={() => setAccessories("earings")}>earings</button>,
-                <button onClick={() => setAccessories("flower")}>flower</button>,
-                <button onClick={() => setAccessories("glasses")}>glasses</button>,
-                <button onClick={() => setAccessories("headphone")}>headphone</button>,
+                <div>
+                  {alpaca.accessories.map((value) => {
+                    return (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                        onClick={() => setAccessories(`${value.value}`)}
+                      >
+                        {" "}
+                        {value.label}{" "}
+                      </button>
+                    );
+                  })}
+                </div>,
               ];
             case "ears":
               return [
-                <button onClick={() => setEars("default")}>default</button>,
-                <button onClick={() => setEars("tiltbackward")}>tiltbackward</button>,
-                <button onClick={() => setEars("tiltforward")}>tiltforward</button>,
+                <div>
+                  {alpaca.ears.map((value) => {
+                    return (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                        onClick={() => setEars(`${value.value}`)}
+                      >
+                        {" "}
+                        {value.label}{" "}
+                      </button>
+                    );
+                  })}
+                </div>,
               ];
             case "hair":
               return [
-                <button onClick={() => setHair("default")}>default</button>,
-                <button onClick={() => setHair("curls")}>curls</button>,
-                <button onClick={() => setHair("elegant")}>elegant</button>,
-                <button onClick={() => setHair("fancy")}>fancy</button>,
-                <button onClick={() => setHair("quiff")}>quiff</button>,
-                <button onClick={() => setHair("short")}>short</button>,
-                <button onClick={() => setHair("bang")}>bang</button>,
+                <div>
+                  {alpaca.hair.map((value) => {
+                    return (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                        onClick={() => setHair(`${value.value}`)}
+                      >
+                        {" "}
+                        {value.label}{" "}
+                      </button>
+                    );
+                  })}
+                </div>,
               ];
             case "leg":
               return [
-                <button onClick={() => setLeg("default")}>default</button>,
-                <button onClick={() => setLeg("bubbletea")}>bubbletea</button>,
-                <button onClick={() => setLeg("cookie")}>cookie</button>,
-                <button onClick={() => setLeg("gameconsole")}>gameconsole</button>,
-                <button onClick={() => setLeg("tiltbackward")}>tiltbackward</button>,
-                <button onClick={() => setLeg("tiltforward")}>tiltforward</button>,
+                <div>
+                  {alpaca.leg.map((value) => {
+                    return (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                        onClick={() => setLeg(`${value.value}`)}
+                      >
+                        {" "}
+                        {value.label}{" "}
+                      </button>
+                    );
+                  })}
+                </div>,
               ];
             case "mouth":
               return [
-                <button onClick={() => setMouth("default")}>default</button>,
-                <button onClick={() => setMouth("eating")}>eating</button>,
-                <button onClick={() => setMouth("laugh")}>laugh</button>,
-                <button onClick={() => setMouth("tongue")}>tongue</button>,
-                <button onClick={() => setMouth("astonished")}>astonished</button>,
+                <div>
+                  {alpaca.mouth.map((value) => {
+                    return (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                        onClick={() => setMouth(`${value.value}`)}
+                      >
+                        {" "}
+                        {value.label}{" "}
+                      </button>
+                    );
+                  })}
+                </div>,
               ];
             case "nose":
-              return [<button onClick={() => setNose("default")}>default</button>];
+              return [
+                <div>
+                  {alpaca.nose.map((value) => {
+                    return (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                        onClick={() => setNose(`${value.value}`)}
+                      >
+                        {" "}
+                        {value.label}{" "}
+                      </button>
+                    );
+                  })}
+                </div>,
+              ];
             case "eyes":
               return [
-                <button onClick={() => setEyes("default")}>default</button>,
-                <button onClick={() => setEyes("naughty")}>naughty</button>,
-                <button onClick={() => setEyes("panda")}>panda</button>,
-                <button onClick={() => setEyes("smart")}>smart</button>,
-                <button onClick={() => setEyes("star")}>star</button>,
-                <button onClick={() => setEyes("angry")}>angry</button>,
+                <div>
+                  {alpaca.eyes.map((value) => {
+                    return (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                        onClick={() => setEyes(`${value.value}`)}
+                      >
+                        {" "}
+                        {value.label}{" "}
+                      </button>
+                    );
+                  })}
+                </div>,
               ];
             default:
               return null;
           }
+        })()}
+      </div>
+
+      <div>
+        {(() => {
+          return (
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+              onClick={() => {
+                setBackground("grey40");
+                setEyes("angry");
+              }}
+            >
+              eyes
+            </button>
+          );
         })()}
       </div>
     </div>

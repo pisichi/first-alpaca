@@ -25,7 +25,7 @@
   font-weight: 800;
 }
 
-button {
+/* button {
   padding: 10px;
   margin: 4px 2px;
   border-radius: 16px;
@@ -37,7 +37,7 @@ button {
 button:hover {
   background-color: #23509C;
   color: white;
-}
+} */
 
 .Menu1 {
    width: 400px;
@@ -75,7 +75,7 @@ button:hover {
 }
 .ears {
   position: absolute;
-  z-index: 5;
+  z-index: 3;
 }
 .eyes {
   position: absolute;

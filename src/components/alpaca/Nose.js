@@ -1,24 +1,9 @@
-
-import React, { useState } from 'react';
-
-import defaultt from '../assets/nose.png';
-
-
-
 const Nose = (props) => {
-    return (
-        <div>
-
-        {(() => {
-           switch (props.nose) {
-             case 'default':
-             return <img src={defaultt} className="nose"/>
-           default:
-             return null
-         }
-         })()}
-        </div>
-    )
-}
+  return (
+    <div>
+      <img alt="placeholder" src={require("../assets/nose/" + props.nose + ".png")} className="nose" />
+    </div>
+  );
+};
 
 export default Nose;
