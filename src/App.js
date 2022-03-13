@@ -1,4 +1,8 @@
 import "./App.css";
+// import { saveAs } from "file-saver";
+// import { saveAsPng, saveAsJpeg } from 'save-html-as-image';
+// import { toBlob } from "canvas-toBlob";
+
 
 import Backgrounds from "./components/alpaca/Backgrounds";
 import Neck from "./components/alpaca/Neck";
@@ -98,249 +102,311 @@ function App() {
   };
 
   return (
-    <div className="w-100">
+    <div className="w-100 m-5">
       <p className="title"> ALPACA GENERATOR </p>
 
-      <div className="Alpaca">
-        <Neck neck={neck} />
-        <Backgrounds background={background} />
-        <Accessories accessories={accessories} />
-        <Ears ears={ears} />
-        <Hair hair={hair} />
-        <Leg leg={leg} />
-        <Mouth mouth={mouth} />
-        <Nose nose={nose} />
-        <Eyes eyes={eyes} />
-      </div>
+      <div className="flex flex-row mt-11">
+        <div className="basis-1/2">
+          <div className="mx-auto" id="my-canvas">
+            <Neck neck={neck} />
+            <Backgrounds background={background} />
+            <Accessories accessories={accessories} />
+            <Ears ears={ears} />
+            <Hair hair={hair} />
+            <Leg leg={leg} />
+            <Mouth mouth={mouth} />
+            <Nose nose={nose} />
+            <Eyes eyes={eyes} />
+          </div>
+        </div>
+        <div className="justify-center basis-1/2">
+          <div className="my-5">
+            <header className="header">ACCESSORIZE THE ALPACA'S</header>
 
-      <div className="Menu1">
-        <header>ACCESSORIZE THE ALPACA'S</header>
-
-        <button
-          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-          onClick={() => setCurrentMenu("background")}
-        >
-          background
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-          onClick={() => setCurrentMenu("neck")}
-        >
-          neck
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-          onClick={() => setCurrentMenu("accessories")}
-        >
-          accessories
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-          onClick={() => setCurrentMenu("ears")}
-        >
-          ears
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-          onClick={() => setCurrentMenu("hair")}
-        >
-          hair
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-          onClick={() => setCurrentMenu("leg")}
-        >
-          leg
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-          onClick={() => setCurrentMenu("mouth")}
-        >
-          mouth
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-          onClick={() => setCurrentMenu("nose")}
-        >
-          nose
-        </button>
-        <button
-          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-          onClick={() => setCurrentMenu("eyes")}
-        >
-          eyes
-        </button>
-      </div>
-
-      <div className="Menu2">
-        <header>STYLE</header>
-
-        {(() => {
-          switch (currentMenu) {
-            case "background":
-              return [
-                <div>
-                  {alpaca.background.map((value) => {
-                    return (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-                        onClick={() => setBackground(`${value.value}`)}
-                      >
-                        {" "}
-                        {value.label}{" "}
-                      </button>
-                    );
-                  })}
-                </div>,
-              ];
-            case "neck":
-              return [
-                <div>
-                  {alpaca.neck.map((value) => {
-                    return (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-                        onClick={() => setNeck(`${value.value}`)}
-                      >
-                        {" "}
-                        {value.label}{" "}
-                      </button>
-                    );
-                  })}
-                </div>,
-              ];
-            case "accessories":
-              return [
-                <div>
-                  {alpaca.accessories.map((value) => {
-                    return (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-                        onClick={() => setAccessories(`${value.value}`)}
-                      >
-                        {" "}
-                        {value.label}{" "}
-                      </button>
-                    );
-                  })}
-                </div>,
-              ];
-            case "ears":
-              return [
-                <div>
-                  {alpaca.ears.map((value) => {
-                    return (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-                        onClick={() => setEars(`${value.value}`)}
-                      >
-                        {" "}
-                        {value.label}{" "}
-                      </button>
-                    );
-                  })}
-                </div>,
-              ];
-            case "hair":
-              return [
-                <div>
-                  {alpaca.hair.map((value) => {
-                    return (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-                        onClick={() => setHair(`${value.value}`)}
-                      >
-                        {" "}
-                        {value.label}{" "}
-                      </button>
-                    );
-                  })}
-                </div>,
-              ];
-            case "leg":
-              return [
-                <div>
-                  {alpaca.leg.map((value) => {
-                    return (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-                        onClick={() => setLeg(`${value.value}`)}
-                      >
-                        {" "}
-                        {value.label}{" "}
-                      </button>
-                    );
-                  })}
-                </div>,
-              ];
-            case "mouth":
-              return [
-                <div>
-                  {alpaca.mouth.map((value) => {
-                    return (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-                        onClick={() => setMouth(`${value.value}`)}
-                      >
-                        {" "}
-                        {value.label}{" "}
-                      </button>
-                    );
-                  })}
-                </div>,
-              ];
-            case "nose":
-              return [
-                <div>
-                  {alpaca.nose.map((value) => {
-                    return (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-                        onClick={() => setNose(`${value.value}`)}
-                      >
-                        {" "}
-                        {value.label}{" "}
-                      </button>
-                    );
-                  })}
-                </div>,
-              ];
-            case "eyes":
-              return [
-                <div>
-                  {alpaca.eyes.map((value) => {
-                    return (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-                        onClick={() => setEyes(`${value.value}`)}
-                      >
-                        {" "}
-                        {value.label}{" "}
-                      </button>
-                    );
-                  })}
-                </div>,
-              ];
-            default:
-              return null;
-          }
-        })()}
-      </div>
-
-      <div>
-        {(() => {
-          return (
             <button
               className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
-              onClick={() => {
-                setBackground("grey40");
-                setEyes("angry");
-              }}
+              onClick={() => setCurrentMenu("background")}
+            >
+              background
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+              onClick={() => setCurrentMenu("neck")}
+            >
+              neck
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+              onClick={() => setCurrentMenu("accessories")}
+            >
+              accessories
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+              onClick={() => setCurrentMenu("ears")}
+            >
+              ears
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+              onClick={() => setCurrentMenu("hair")}
+            >
+              hair
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+              onClick={() => setCurrentMenu("leg")}
+            >
+              leg
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+              onClick={() => setCurrentMenu("mouth")}
+            >
+              mouth
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+              onClick={() => setCurrentMenu("nose")}
+            >
+              nose
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+              onClick={() => setCurrentMenu("eyes")}
             >
               eyes
             </button>
-          );
-        })()}
+          </div>
+
+          <div className="my-5">
+            <header className="header">STYLE</header>
+
+            {(() => {
+              switch (currentMenu) {
+                case "background":
+                  return [
+                    <div>
+                      {alpaca.background.map((value) => {
+                        return (
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                            onClick={() => setBackground(`${value.value}`)}
+                          >
+                            {value.label}
+                          </button>
+                        );
+                      })}
+                    </div>,
+                  ];
+                case "neck":
+                  return [
+                    <div>
+                      {alpaca.neck.map((value) => {
+                        return (
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                            onClick={() => setNeck(`${value.value}`)}
+                          >
+                            {value.label}
+                          </button>
+                        );
+                      })}
+                    </div>,
+                  ];
+                case "accessories":
+                  return [
+                    <div>
+                      {alpaca.accessories.map((value) => {
+                        return (
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                            onClick={() => setAccessories(`${value.value}`)}
+                          >
+                            {value.label}
+                          </button>
+                        );
+                      })}
+                    </div>,
+                  ];
+                case "ears":
+                  return [
+                    <div>
+                      {alpaca.ears.map((value) => {
+                        return (
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                            onClick={() => setEars(`${value.value}`)}
+                          >
+                            {value.label}
+                          </button>
+                        );
+                      })}
+                    </div>,
+                  ];
+                case "hair":
+                  return [
+                    <div>
+                      {alpaca.hair.map((value) => {
+                        return (
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                            onClick={() => setHair(`${value.value}`)}
+                          >
+                            {value.label}
+                          </button>
+                        );
+                      })}
+                    </div>,
+                  ];
+                case "leg":
+                  return [
+                    <div>
+                      {alpaca.leg.map((value) => {
+                        return (
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                            onClick={() => setLeg(`${value.value}`)}
+                          >
+                            {value.label}
+                          </button>
+                        );
+                      })}
+                    </div>,
+                  ];
+                case "mouth":
+                  return [
+                    <div>
+                      {alpaca.mouth.map((value) => {
+                        return (
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                            onClick={() => setMouth(`${value.value}`)}
+                          >
+                            {value.label}
+                          </button>
+                        );
+                      })}
+                    </div>,
+                  ];
+                case "nose":
+                  return [
+                    <div>
+                      {alpaca.nose.map((value) => {
+                        return (
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                            onClick={() => setNose(`${value.value}`)}
+                          >
+                            {value.label}
+                          </button>
+                        );
+                      })}
+                    </div>,
+                  ];
+                case "eyes":
+                  return [
+                    <div>
+                      {alpaca.eyes.map((value) => {
+                        return (
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-1 my-1"
+                            onClick={() => setEyes(`${value.value}`)}
+                          >
+                            {value.label}
+                          </button>
+                        );
+                      })}
+                    </div>,
+                  ];
+                default:
+                  return null;
+              }
+            })()}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-row">
+        <div className="basis-1/2"> </div>
+        <div className="basis-1/4">
+          <header className="header">Util</header>
+          <div>
+            {(() => {
+              return (
+                <button
+                  className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 red-blue-700 hover:border-red-500 rounded mx-1 my-1"
+                  onClick={() => {
+                    setBackground(alpaca.background[Math.floor(Math.random() * alpaca.background.length)].value);
+                    setNeck(alpaca.neck[Math.floor(Math.random() * alpaca.neck.length)].value);
+                    setAccessories(alpaca.accessories[Math.floor(Math.random() * alpaca.accessories.length)].value);
+                    setEars(alpaca.ears[Math.floor(Math.random() * alpaca.ears.length)].value);
+                    setEyes(alpaca.eyes[Math.floor(Math.random() * alpaca.eyes.length)].value);
+                    setHair(alpaca.hair[Math.floor(Math.random() * alpaca.hair.length)].value);
+                    setLeg(alpaca.leg[Math.floor(Math.random() * alpaca.leg.length)].value);
+                    setMouth(alpaca.mouth[Math.floor(Math.random() * alpaca.mouth.length)].value);
+                    setNose(alpaca.nose[Math.floor(Math.random() * alpaca.nose.length)].value);
+                  }}
+                >
+                  Random
+                </button>
+              );
+            })()}
+          </div>
+
+          <div>
+            {(() => {
+               var canvas = document.getElementById("my-canvas");
+              return (
+                
+                <button
+                  className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 red-blue-700 hover:border-red-500 rounded mx-1 my-1"
+                  onClick={() => {
+                    var canvas = document.getElementById("my-canvas");
+                    console.log(canvas);
+                    // saveAsPng(canvas, { filename: 'Alpaca', printDate: true });
+                    // var canvas = document.getElementById("my-canvas");
+                    // canvas.toBlob(function (blob) {
+                    //   saveAs(blob, "Alpaca.png");
+                    // });
+                  }}
+                >
+                  Save Image
+                </button>
+              );
+            })()}
+          </div>
+
+          <div>
+            {/* {process.env.REACT_APP_BITLY_KEY} */}
+            {(() => {
+              return (
+                <button
+                  className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 red-blue-700 hover:border-red-500 rounded mx-1 my-1"
+                  onClick={async () => {
+                    // const BitlyClient = require('bitly').BitlyClient;
+                    // const bitly = new BitlyClient(process.env.REACT_APP_BITLY_KEY);
+                    // const response = await bitly.shorten('https://github.com/cool-hooks/react-shorten-url');
+                    // console.log(`Your shortened bitlink is ${response.link}`);
+
+                    // const bitly = new BitlyClient("22aba0aa901c78e5e50cc8aabf3f1e7a606537d3", {});
+
+                    // let result;
+                    // try {
+                    //   result = await bitly.shorten("https://github.com/tanepiper/node-bitly");
+                    // } catch (e) {
+                    //   throw e;
+                    // }
+                    // console.log('shorten!!!!', result)
+                    // return result;
+                  }}
+                >
+                  Shorten URL
+                </button>
+              );
+            })()}
+          </div>
+        </div>
       </div>
     </div>
   );
